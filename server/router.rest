@@ -1,0 +1,19 @@
+GET  http://localhost:3031/api/product
+
+###
+GET  http://localhost:3031/api/product/6096b8cff8086e2588f5aaca
+
+###
+POST  http://localhost:3031/api/product
+Content-Type: application/json
+
+{
+    "name": "Ví Card Feasty",
+    "imageArr": "./src/assets/images/products/vi-card-feasty/1.png", 
+    "description": "Một chiếc ví card cánh gập cơ bản, tối giản nhất, mọi chi tiết thêm vào là sự thừa thãi không cần thiết. Chất liệu: Da bò nhập khẩu Tính năng: Chống thấm, mềm mại, độ bền cao, nhỏ gọn trong tay, không gây cộm túi. Kích thước: 7.5 x 11 cm .Để được 15 tờ tiền gấp đôi, thẻ card, ảnh, CMND/CCCD, các loại giấy tờ 3 khe thẻ, 1 khe bóng kính Bảo hành 12 tháng lỗi NSX"
+,
+    "price": "130000"
+}
+
+###
+DELETE http://localhost:3031/api/product/

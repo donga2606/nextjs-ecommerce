@@ -1,0 +1,85 @@
+/* detailCard */
+.detailCardPage {
+  margin: 30px auto;
+}
+
+.detailCardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Slider */
+.detailSlider {
+  flex: 0 1 650px;
+  display: flex;
+  padding: 10px;
+}
+.detailSliderNav {
+  display: flex;
+  flex: 0 1 20px;
+}
+.slideNavDot {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  border: 2px solid #e0e0e0;
+  background: transparent;
+
+  /* transition: all 0.2s ease-in-out; */
+}
+.detailSliderImage {
+  display: flex;
+  
+  overflow-y: auto;
+  scroll-snap-type: x mandatory;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.detailSliderImage::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.detailSliderImage::-webkit-scrollbar-thumb {
+  background: #eaeaea;
+  border-radius: 10px;
+}
+
+
+/* info */
+.detailCardInfo {
+  padding: 10px;
+  flex: 0 1 600px;
+}
+
+.detailInfoName {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+.detailInfoPrice {
+  margin: 10px 0;
+  color: #d70000;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.detailInfoDescription {
+  line-height: 1.65;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  line-height: 3rem;
+  margin: 20px 0;
+  border: none;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: black;
+  color: #fff;
+}
