@@ -42,7 +42,7 @@ const DetailPage = (props) => {
 export async function getStaticPaths() {
   let paths = []
 
-  await api.get('http://localhost:3031/api/product/').then((response) => {
+  await api.get('http://localhost:4041/api/product/').then((response) => {
     const products = response.data.data
     
     paths = products.map((item) => ({

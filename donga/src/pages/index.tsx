@@ -62,7 +62,7 @@ function Home() {
   }
 
   useEffect(() => {
-    api.get('http://localhost:3031/api/product').then((response): any => {
+    api.get('http://localhost:4041/api/product').then((response): any => {
       const data: any = response.data.data
 
       const products: IProduct[] = data.map((item) => {

@@ -5,7 +5,7 @@ const routes = require('../common/routes')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
-const port = 3000
+const port = 9000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handler = routes.getRequestHandler(app)
