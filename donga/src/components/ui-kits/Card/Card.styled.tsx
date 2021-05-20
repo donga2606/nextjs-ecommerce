@@ -11,7 +11,7 @@ export const StyledCard = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   padding: 10px;
-  grid-gap: 20px;
+grid-gap: 20px;
   &:hover{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   }
