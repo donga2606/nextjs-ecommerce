@@ -6,7 +6,7 @@ import UserModel from "./User";
 import OrderModel from "./Order";
 
 const Product = mongoose.model(
-  "Product",
+  "Products",
   new Schema(ProductModel, { timestamps: true })
 );
 

@@ -59,7 +59,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   let product = {};
-  await api.get(`http://localhost:3031/api/product/${params.id}`).then((response)=>{
+  await api.get(`http://localhost:4041/api/product/${params.id}`).then((response)=>{
     product = response.data.data;
   })
   return {

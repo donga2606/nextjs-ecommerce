@@ -4,7 +4,7 @@ import {saveStorage} from './function'
 export const connectDatabase = (): void => {
   mongoose.Promise = require('bluebird')
 
-  mongoose.connect('mongodb://45.77.252.184:27017/donga', {
+  mongoose.connect('mongodb://localhost:27017/donga', {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useNewUrlParser: true,
