@@ -16,15 +16,6 @@ import { useRouter } from 'next/router'
 import api from '../../controller/BaseApi'
 import { users_DB, IUser } from '../interfaces/user'
 
-// TODO: Làm lại content cho trang chủ: chiều nay
-// 1. dùng grid làm layout, có thể dùng lại cái cũ.
-// 2. thêm 9 sản phẩm vào database
-// 3. làm lại button custom
-// 4. Làm banner
-// Đêm nay: làm lại header và footer cho responsive, không kịp thì tối thứ 4 làm.
-// 1. thay đổi font chữ Brand
-// 2. làm navbar khi thu nhỏ responsive
-
 interface IProduct {
   id: number
   name: string
@@ -62,7 +53,7 @@ function Home() {
   }
 
   useEffect(() => {
-    api.get('http://localhost:4041/api/product').then((response): any => {
+    api.get('http://45.77.252.184:4041/api/product').then((response): any => {
       const data: any = response.data.data
 
       const products: IProduct[] = data.map((item) => {
