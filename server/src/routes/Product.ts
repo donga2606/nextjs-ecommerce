@@ -8,7 +8,7 @@ router.delete("/:id", Services.delete);
 
 // Can receive req.body req.query or req.params
 router.post("/", Services.post);
-router.put("/", Services.put);
+router.put("/:id", Services.put);
 
 // Get specific product by ID
 router.get("/:id", Services.getById);

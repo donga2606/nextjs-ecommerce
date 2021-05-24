@@ -9,6 +9,8 @@ import { connectDatabase } from './common/connectDatabase'
 import {ApolloServer} from 'apollo-server-express'
 import {resolvers} from './resolver-gql/resolver-gql'
 import typeDefs from './schema-gql/schema-gql'
+import {graphqlHTTP} from 'express-graphql'
+
 
 dotenv.config()
 
@@ -35,10 +37,13 @@ app.use(express.json())
 // api route
 app.use('/api/product', ProductRouter)
 
-
 // connect database
-connectDatabase()
+connectDatabase() 
+
+// app.use('/graphql', graphqlHTTP({ schema: Schema, pretty: true }))
+
 
 http.createServer(app).listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}${server.graphqlPath}`)
 })
+

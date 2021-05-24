@@ -19,6 +19,7 @@ export const resolvers = {
     // all order item even finish or not, this is not nessesary but need for admin to check.
     orderItems: () => OrderItem.find(),
   },
+  
   OrderItem: {},
 
   User: {

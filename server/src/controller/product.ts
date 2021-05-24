@@ -13,7 +13,8 @@ export default class ProductServices {
     res: Response<ReponseType>
   ): Promise<Response<ReponseType>> {
     try {
-      const payload = await Product.find({});
+      const payload: any = await Product.find({});
+      
       return res.json({ success: true, data: payload });
     } catch (error) {
       return res.status(500);
@@ -71,17 +72,19 @@ export default class ProductServices {
     res: Response<ReponseType>
   ): Promise<Response<ReponseType>> {
     try {
-      const { id, name, image, price } = req.body;
+      const _id = req.params.id;
+      const { name, imageArr, price, description } = req.body;
 
       const payload = await Product.findOneAndUpdate(
-        { id },
+        { _id },
         {
           name,
-          image,
+          imageArr,
           price,
+          description,
         }
-      );
-
+      )
+      console.log(payload)
       return res.json({ success: true, data: payload });
     } catch (error) {
       return res.status(500);
