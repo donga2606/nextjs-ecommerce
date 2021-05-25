@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-
 import ProductModel from "./Product";
 import OrderItemModel from "./OrderItem";
 import UserModel from "./User";

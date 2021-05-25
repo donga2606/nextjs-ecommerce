@@ -38,7 +38,8 @@ app.use(express.json())
 app.use('/api/product', ProductRouter)
 
 // connect database
-connectDatabase() 
+connectDatabase(); 
+
 
 // app.use('/graphql', graphqlHTTP({ schema: Schema, pretty: true }))
 
