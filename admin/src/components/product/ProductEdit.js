@@ -18,7 +18,7 @@ const ProductEdit = (props) => {
         <TextInput disabled source="id" fullWidth={true} />
         <TextInput source="name" fullWidth={true} />
         <TextInput source="description" fullWidth={true} />
-        <TextInput source="imageArr" fullWidth={true} />
+        <TextInput source="imageArr" fullWidth={true} label='Images' />
       </SimpleForm>
     </Edit>
   );

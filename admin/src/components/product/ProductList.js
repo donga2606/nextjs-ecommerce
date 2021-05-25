@@ -1,5 +1,6 @@
 import React from "react";
 import { TextField, List, Datagrid, RichTextField, EditButton } from "react-admin";
+import { CustomImagesField } from "../Fields";
 
 const ProductList = (props) => {
   return (
@@ -7,7 +8,7 @@ const ProductList = (props) => {
       <Datagrid rowClick='edit'>
         <TextField source="_id" />
         <TextField source="name" />
-        <RichTextField source="imageArr" label="Images"/>     
+        <CustomImagesField source="imageArr" label="Images"/>     
         <RichTextField source="description" />
         <EditButton />
       </Datagrid>
