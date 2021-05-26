@@ -1,7 +1,6 @@
 import React from "react";
 import { Edit, SimpleForm, TextInput, useNotify, useRedirect } from "react-admin";
 
-
 const ProductEdit = (props) => {
     const notify = useNotify();
     const redirect = useRedirect();

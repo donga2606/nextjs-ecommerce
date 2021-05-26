@@ -76,6 +76,12 @@ function Home() {
       <Head>
         <title>SevenSunday</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+            rel="preload"
+            href="/fonts/Garamond-Premier-Pro-Medium Caption.otf"
+            as="font"
+            crossOrigin=""
+          />
       </Head>
       <HeaderCustom cartNum={cartNum} />
       <HeroBanner></HeroBanner>
