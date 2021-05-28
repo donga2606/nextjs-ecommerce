@@ -14,15 +14,15 @@ import {graphqlHTTP} from 'express-graphql'
 
 dotenv.config()
 
-const CronJob = require('cron').CronJob
+// const CronJob = require('cron').CronJob
 
-const cronjobExample = new CronJob('0 */1 * * * *', () => {
-// Do cronjob in here
-  const exec = require('child_process').exec
-  exec('bash ./backup.sh')
-}, null, true)
+// const cronjobExample = new CronJob('0 */1 * * * *', () => {
+// // Do cronjob in here
+//   const exec = require('child_process').exec
+//   exec('bash ./backup.sh')
+// }, null, true)
 
-cronjobExample.start()
+// cronjobExample.start()
 
 
 // port

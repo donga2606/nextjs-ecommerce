@@ -1,10 +1,11 @@
 import { defaultModel } from "../common/constants";
 
 export default {
-  // id: defaultModel.string,
   name: defaultModel.string,
   description: defaultModel.string,
-  imageArr: [defaultModel.string],
+  imageArr: defaultModel.array,
   price: defaultModel.string,
   isActive: defaultModel.boolean,
 };
+
+

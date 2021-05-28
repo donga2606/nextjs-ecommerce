@@ -29,15 +29,11 @@ const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
       <div className={styles.detailCardWrapper}>
         <div className={styles.detailSlider}>
           <div className={styles.detailSliderNav}>
-            {/* {product.imageArr.map((img, index) => (
-              <Link href={`#slider-${index + 1}`}>
-                <a key={index} className={styles.slideNavDot}></a>
-              </Link>
-            ))} */}
+            
           </div>
           <div className={styles.detailSliderImage}>
             {product.imageArr.map((img, index) => (
-              <img key={index} id={`slider-${index + 1}`} src={img} alt={product.name} />
+              <img key={index} id={`slider-${index + 1}`} src={img.url} alt={product.name} />
             ))}
           </div>
         </div>

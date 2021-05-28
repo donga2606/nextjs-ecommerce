@@ -8,7 +8,7 @@ const ProductList = (props) => {
       <Datagrid rowClick='edit'>
         <TextField source="_id" />
         <TextField source="name" />
-        <CustomImagesField source="imageArr" label="Images"/>     
+        <CustomImagesField source="imageArr"/>     
         <RichTextField source="description" />
         <EditButton />
       </Datagrid>

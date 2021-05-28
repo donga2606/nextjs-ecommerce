@@ -1,5 +1,5 @@
 import React from 'react'
-import {Create, SimpleForm, TextInput} from 'react-admin'
+import {ArrayInput, Create, SimpleForm, SimpleFormIterator, TextInput} from 'react-admin'
 
 const ProductCreate = props => (
         <Create {...props}>
@@ -8,7 +8,11 @@ const ProductCreate = props => (
                     <SelectInput optionText="name" />
                 </ReferenceInput> */}
                 <TextInput source="name" />
-                <TextInput source="imageArr" />
+                <ArrayInput source="imageArr" >
+                    <SimpleFormIterator>
+                        <TextInput source="url" />
+                    </SimpleFormIterator>
+                </ArrayInput>
                 <TextInput source="price" />
                 <TextInput source="description" />
             </SimpleForm>

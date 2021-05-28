@@ -14,14 +14,13 @@ const useStyles = makeStyles({
 
 
 const CustomImagesField = ({ source }) => { 
-
   const record = useRecordContext();
   const imagesUrl = record[source];
   const classes = useStyles();
   return record ? (
       <div className={classes.container}>
-      { imagesUrl.map(url =>(
-          <img src = {url} className={classes.image} />
+      { imagesUrl.map((image, index) =>(
+          <img src = {image.url} className={classes.image} key={index} alt={image.url} />
       )) }
       </div>
   ) : null;

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, ReactChild } from 'react'
 import Head from 'next/head'
 import { HeaderCustom } from '../components/HeaderCustom'
@@ -15,16 +16,7 @@ import { Card } from '../components/ui-kits/Card'
 import { useRouter } from 'next/router'
 import api from '../../controller/BaseApi'
 import { users_DB, IUser } from '../interfaces/user'
-
-interface IProduct {
-  id: number
-  name: string
-  imageArr: string
-  description: string
-  price: number
-}
-
-export const HomeContainer = styled.div``
+import IProduct from '../interfaces/product'
 
 export const StyledHomeBody = styled.div`
   display: grid;
@@ -67,6 +59,7 @@ function Home() {
       })
       setProduct(products)
       console.log(data)
+      console.log(products)
     })
     handleCartNum()
   }, [])
@@ -91,7 +84,7 @@ function Home() {
           {product.map((data) => (
             <Card
               key={data.id}
-              imageURL={data.imageArr[0]}
+              imageURL={data.imageArr[0].url}
               buttonGroups={
                 <>
                   <Button
