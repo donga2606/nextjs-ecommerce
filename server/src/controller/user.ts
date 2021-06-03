@@ -14,7 +14,6 @@ export default class UserServices {
   ): Promise<Response<ReponseType>> {
     try {
       const payload: any = await User.find({});
-
       return res.json({ success: true, data: payload });
     } catch (error) {
       return res.status(500);
@@ -46,9 +45,9 @@ export default class UserServices {
         username,
         password,
         cart,
-        ordered
+        ordered,
       });
-      saveStorage(payload._id, JSON.stringify(payload));
+      // saveStorage(payload._id, JSON.stringify(payload));
       return res.json({ success: true, data: payload });
     } catch (error) {
       return res.status(500);

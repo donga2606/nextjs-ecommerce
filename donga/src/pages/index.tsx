@@ -119,19 +119,4 @@ function Home() {
 
 export default withApollo({ ssr: true })(Home)
 
-// Mang 3 cai interface bai 1 va bai 2 de vao thu muc interface
-// Sua lai trang home cua project demo, product card co thiet ke
-// goi lai api, lam 1 file, tao 1 thu muc controller, tao 1 interface class cho api
 
-// class BaseAPI(){
-//     get(url){
-//         this.postTxs()
-//     }
-//     postTxs(url):void{
-//         return axios.get(url)
-//     }
-// }
-
-// Goi va hien thi api product
-// Hien thi va show cart, lam function thay doi cart
-// hien thi con bao nhieu cart, bao nhieu trong gio hang

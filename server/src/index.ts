@@ -1,18 +1,20 @@
-import * as dotenv from 'dotenv'
-import http from 'http'
-import express from 'express'
-import cors from 'cors'
-import morgan from 'morgan'
-import helmet from 'helmet'
-import ProductRouter from './routes/Product'
-import { connectDatabase } from './common/connectDatabase'
-import {ApolloServer} from 'apollo-server-express'
-import {resolvers} from './resolver-gql/resolver-gql'
-import typeDefs from './schema-gql/schema-gql'
-import {graphqlHTTP} from 'express-graphql'
+import * as dotenv from "dotenv";
+import http from "http";
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import helmet from "helmet";
+import ProductRouter from "./routes/Product";
+import UserRouter from "./routes/User";
+import { connectDatabase } from "./common/connectDatabase";
+import { ApolloServer, Request } from "apollo-server-express";
+import { resolvers } from "./resolver-gql/resolver-gql";
+import typeDefs from "./schema-gql/schema-gql";
+import loginServices from "./controller/login";
 
 
-dotenv.config()
+
+dotenv.config();
 
 // const CronJob = require('cron').CronJob
 
@@ -24,38 +26,41 @@ dotenv.config()
 
 // cronjobExample.start()
 
-
 // port
-const PORT: number = parseInt(process.env.PORT as string, 10)
+const PORT: number = parseInt(process.env.PORT as string, 10);
 
-// create app
-const app = express()
+const app = express();
 
-// apollo
+// apollo graphql
 const server = new ApolloServer({
   typeDefs,
-  resolvers
-})
+  resolvers,
+});
 
-server.applyMiddleware({app})
+server.applyMiddleware({ app });
 
 // middleware
-app.use(morgan('dev'))  
-app.use(helmet())
-app.use(cors())
-app.use(express.json())
+app.use(morgan("dev"));
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
 
 // api route
-app.use('/api/product', ProductRouter)
+app.use("/api/user", UserRouter);
+app.use("/api/product", ProductRouter);
+
+// try first
+app.post("/login", loginServices);
 
 // connect database
-connectDatabase(); 
-
-
-// app.use('/graphql', graphqlHTTP({ schema: Schema, pretty: true }))
+connectDatabase();
 
 
 http.createServer(app).listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}${server.graphqlPath}`)
-})
+  console.log(
+    `Server is running at http://localhost:${PORT}${server.graphqlPath}`
+  );
+});
+
+
 

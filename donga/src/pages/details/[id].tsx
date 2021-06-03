@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import { HeaderCustom } from '../../components/HeaderCustom'
 import { Footer } from '../../components/Footer'
-import Layout from '../../components/Layout/Layout'
-import { useRouter } from 'next/router'
+// import Layout from '../../components/Layout/Layout'
+// import { useRouter } from 'next/router'
 import { DetailCard } from '../../components/ui-kits/DetailCard'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import api from '../../../controller/BaseApi'
 
 interface IProduct {
@@ -17,7 +17,6 @@ interface IProduct {
 }
 
 const DetailPage = (props) => {
-  const { id } = useRouter().query
   
   const [product, setProduct] = useState(props.product)
 

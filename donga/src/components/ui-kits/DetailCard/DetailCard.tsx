@@ -3,24 +3,14 @@ import StyledGlobalLayout from '../../GlobalLayout/GlobalLayout.styled'
 import { Button } from '../Button'
 import styles from './DetailCard.module.css'
 import Link from 'next/link'
-
-// import {
-//     StyledDetailCard,
-//     StyledDetailCardBody,
-//     StyledDetailCardImage,
-//     StyledDetailCardImageWrapper,
-//     StyledDetailCardPriceButton,
-//     StyledDetailCardText
-// }
-// from './DetailCard.styled'
+import numbro from 'numbro'
 
 interface DetailCardProps {
   children?: React.ReactNode
   onClick?(e: React.MouseEvent<HTMLElement>): void
   buttonGroups?: React.ReactNode
   imageURL?: string
-  product: Record<string, any>
-  // alt: string
+  product: Record<string, any> 
 }
 
 const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
@@ -28,9 +18,7 @@ const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
     <div className={styles.detailCardPage}>
       <div className={styles.detailCardWrapper}>
         <div className={styles.detailSlider}>
-          <div className={styles.detailSliderNav}>
-            
-          </div>
+          <div className={styles.detailSliderNav}></div>
           <div className={styles.detailSliderImage}>
             {product.imageArr.map((img, index) => (
               <img key={index} id={`slider-${index + 1}`} src={img.url} alt={product.name} />
@@ -39,7 +27,9 @@ const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
         </div>
         <div className={styles.detailCardInfo}>
           <h3 className={styles.detailInfoName}>{product.name}</h3>
-          <div className={styles.detailInfoPrice}>{product.price}</div>
+          <div className={styles.detailInfoPrice}>
+            {numbro(product.price).format({ thousandSeparated: true })} đ
+          </div>
           <button className={styles.button}>ADD TO CART</button>
           <div className={styles.detailInfoDescription}>{product.description}</div>
         </div>
@@ -48,23 +38,5 @@ const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
   )
 }
 
-{
-  /* <StyledDetailCard>
-        <StyledDetailCardImageWrapper>
-            <StyledDetailCardImage src = {product.imageArr[0]} alt={product.name} height={420} width={327}></StyledDetailCardImage>
-        </StyledDetailCardImageWrapper>
-        <StyledDetailCardBody>
-            <StyledDetailCardText>
-                <h1>{product.name}</h1>
-                <h2>{product.by}</h2>
-                <p>{product.description}</p>
-            </StyledDetailCardText>
-            <StyledDetailCardPriceButton>
-            <p><span>{product.price}</span></p>
-            
-            </StyledDetailCardPriceButton>
-        </StyledDetailCardBody>
-</StyledDetailCard> */
-}
-
 export default DetailCard
+

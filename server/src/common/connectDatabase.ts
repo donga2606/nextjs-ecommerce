@@ -1,20 +1,25 @@
 import mongoose from 'mongoose'
 import {saveStorage} from './function'
+import * as dotenv from 'dotenv'
+
+
+dotenv.config()
 
 export const connectDatabase = () => {
   mongoose.Promise = require('bluebird')
 
-  return mongoose.connect('mongodb://admin:admin123@45.77.252.184:27017/donga', {
+  return mongoose.connect(`mongodb://${process.env.USER_NAME}:${process.env.USER_PASSWORD}@${process.env.DB_URL}:27017/${process.env.DB_NAME}`, {
     useUnifiedTopology: true,
     useFindAndModify: false,
     useNewUrlParser: true,
     useCreateIndex: true
   })
-    // .then(async () => {
-    //   console.log('Database connection created')
+    .then(async () => {
+      console.log('Database connection created')
       
-    // }).catch((err) => {
-    //   console.log(err)
-    // })
+    }).catch((err) => {
+      console.log(err)
+    })
 }
+
 

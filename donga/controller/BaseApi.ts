@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { stringify } from 'node:querystring'
 
 interface IBaseApi {
   handleResponse: (res: any) => any
@@ -31,7 +30,7 @@ class BaseApi implements IBaseApi {
     const args: Record<string, any> = {
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: JSON.stringify(body),
+      data: body,
       url,
     }
     try {
@@ -79,6 +78,7 @@ class BaseApi implements IBaseApi {
 }
 
 const api = new BaseApi()
+
 export default api
 
 // tao them method de rieng url ra
