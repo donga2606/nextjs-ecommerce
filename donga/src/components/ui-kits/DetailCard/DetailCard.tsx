@@ -1,19 +1,23 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useContext } from 'react'
 import StyledGlobalLayout from '../../GlobalLayout/GlobalLayout.styled'
 import { Button } from '../Button'
 import styles from './DetailCard.module.css'
 import Link from 'next/link'
 import numbro from 'numbro'
+import { DataContext } from '../../../../controller/store/GlobalState'
+import { addToCart } from '../../../../controller/store/Actions'
 
 interface DetailCardProps {
   children?: React.ReactNode
   onClick?(e: React.MouseEvent<HTMLElement>): void
   buttonGroups?: React.ReactNode
   imageURL?: string
-  product: Record<string, any> 
+  product: Record<string, any>
 }
 
 const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
+  const { state, dispatch } = useContext(DataContext)
+  const {cart} = state
   return (
     <div className={styles.detailCardPage}>
       <div className={styles.detailCardWrapper}>
@@ -30,7 +34,9 @@ const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
           <div className={styles.detailInfoPrice}>
             {numbro(product.price).format({ thousandSeparated: true })} đ
           </div>
-          <button className={styles.button}>ADD TO CART</button>
+          <button className={styles.button} onClick={() => dispatch(addToCart(product, cart))}>
+            ADD TO CART
+          </button>
           <div className={styles.detailInfoDescription}>{product.description}</div>
         </div>
       </div>
@@ -39,4 +45,3 @@ const DetailCard: React.FC<DetailCardProps> = ({ product }) => {
 }
 
 export default DetailCard
-

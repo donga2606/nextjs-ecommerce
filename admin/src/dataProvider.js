@@ -57,13 +57,13 @@ const dataProvider = {
   },
 
   update: (resource, params) =>{
-    console.log(params)
+    
     return (
     httpClient(`${apiUrl}/${resource}/${params.id}`, {
       method: "PUT",
       body: JSON.stringify(params.data),
     }).then(({ json }) => { 
-      console.log(json)
+      
       return ({
         data: {...json.data, id: json.data._id}
       })
@@ -85,13 +85,13 @@ const dataProvider = {
       method: "POST",
       body: JSON.stringify(params.data),
     }).then(({ json }) => {
-      console.log(json)
+      
       return {data: { ...json.data, id: json.data._id},}
     }),
 
   delete: (resource, params) =>
     {
-      console.log(params)
+      
     return httpClient(`${apiUrl}/${resource}/${params.id}`, {
       method: "DELETE",
     }).then(({ json }) => ({ data: {...json.data, id: json.data._id} }))
@@ -100,7 +100,7 @@ const dataProvider = {
     const query = {
       filter: JSON.stringify({ id: params.ids }),
     };
-    console.log(query)
+    
     return httpClient(`${apiUrl}/${resource}?${stringify(query)}`, {
       method: "DELETE",
     }).then(({ json }) => ({ data: json }));

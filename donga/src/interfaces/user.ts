@@ -1,7 +1,3 @@
-let new_user_id: number = 1;
-export let users_DB: IUser[] = [];
-
-
 
 export interface IUser{
     readonly id: number,
@@ -13,9 +9,6 @@ export interface IUser{
     remove_item_from_cart: (product_id: number) => void
     checkout: () => boolean
   }
-
-
-
   class User implements IUser {
     id: number;
     name: string;
@@ -58,12 +51,7 @@ export interface IUser{
     }
 }
 
-const createNewUser = (name: string, age: number) => {
-    let user: IUser = new User(new_user_id, name, age);
-    new_user_id ++;
-    users_DB.push(user)
-    return user;
-}
+
   
 export interface IOrderItem {
     product_id: number,
@@ -78,11 +66,5 @@ class OrderItem implements IOrderItem{
     constructor(product_id: number, ){
         this.product_id = product_id
     }
-    // total_money(){
-    //     const price = products_DB.filter((item) => this.product_id === item.id)[0].price
-    //     return this.quantity*price
-    // }
 }
 
-let user1 = createNewUser('donga', 29)
-let user2 = createNewUser('naruto', 27)

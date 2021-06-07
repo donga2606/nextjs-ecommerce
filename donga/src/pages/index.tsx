@@ -1,7 +1,5 @@
-
-import React, { useEffect, useState, ReactChild } from 'react'
+import React, { useEffect, useState, ReactChild, useContext } from 'react'
 import Head from 'next/head'
-import { HeaderCustom } from '../components/HeaderCustom'
 import { HeroBanner } from '../components/ui-kits/Herobanner'
 import GlobalLayout from '../components/GlobalLayout/GlobalLayout'
 import Layout from '../components/Layout/Layout'
@@ -9,14 +7,15 @@ import styled from 'styled-components'
 import Button from '../components/ui-kits/Button/Button'
 import withApollo from '../utils/withApollo'
 import { useQuery } from '@apollo/react-hooks'
-// import { GET_PRODUCTS } from '../graphql/product/product.query'
-// import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
+
 import { Card } from '../components/ui-kits/Card'
 import { useRouter } from 'next/router'
 import api from '../../controller/BaseApi'
-import { users_DB, IUser } from '../interfaces/user'
-import IProduct from '../interfaces/product'
+
+import { DataContext } from '../../controller/store/GlobalState'
+import { addToCart } from '../../controller/store/Actions'
+import { IProduct } from '../../controller/store/Interfaces'
+import Link from 'next/link'
 
 export const StyledHomeBody = styled.div`
   display: grid;
@@ -26,23 +25,15 @@ export const StyledHomeBody = styled.div`
   grid-gap: 20px;
   min-height: 80vh;
 `
-const user: IUser = users_DB[0]
 
 function Home() {
   const [product, setProduct] = useState<IProduct[]>([])
 
-  const [cartNum, setCartNum] = useState<number>(0)
+  const { state, dispatch } = useContext(DataContext)
+
+  const { cart } = state
 
   const router = useRouter()
-
-  const handleCartNum = (): void => {
-    const cartNumber = user.cart.reduce((total, item) => {
-      total += item.quantity
-      return total
-    }, 0)
-
-    setCartNum(cartNumber)
-  }
 
   useEffect(() => {
     api.get('http://localhost:4041/api/product').then((response): any => {
@@ -58,26 +49,17 @@ function Home() {
         }
       })
       setProduct(products)
-      console.log(data)
-      console.log(products)
     })
-    handleCartNum()
   }, [])
 
   return (
-    <GlobalLayout>
+    <>
       <Head>
-        <title>SevenSunday</title>
+        <title>Leonardo</title>
         <link rel="icon" href="/favicon.ico" />
-        <link
-            rel="preload"
-            href="/fonts/Garamond-Premier-Pro-Medium Caption.otf"
-            as="font"
-            crossOrigin=""
-          />
       </Head>
-      <HeaderCustom cartNum={cartNum} />
-      <HeroBanner></HeroBanner>
+
+      <HeroBanner />
       <Layout>
         <StyledHomeBody>
           {/* Link to each product ID */}
@@ -90,15 +72,13 @@ function Home() {
                   <Button
                     onClick={() => {
                       router.push(`/details/${data.id}`)
-                      localStorage.setItem(`product_data_${data.id}`, JSON.stringify(data))
                     }}
                   >
                     View
                   </Button>
                   <Button
                     onClick={() => {
-                      user.add_to_cart(data.id)
-                      handleCartNum()
+                      dispatch(addToCart(data, cart))
                     }}
                   >
                     Add to Cart
@@ -111,12 +91,8 @@ function Home() {
           ))}
         </StyledHomeBody>
       </Layout>
-
-      <Footer />
-    </GlobalLayout>
+    </>
   )
 }
 
 export default withApollo({ ssr: true })(Home)
-
-

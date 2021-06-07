@@ -1,83 +1,73 @@
-import axios from 'axios'
+const baseUrl = 'http://localhost:4041'
 
-interface ITokenApi {
-  handleResponse: (res: any) => any
-  get: (header: string, url: string) => Promise<Record<string, any>>
-  post: (header: string, url: string, body: Record<string, any>) => any
-  put: (header: string, url: string, body: Record<string, any>) => any
-  delete: (header: string, url: string) => any
+// TODO: axios
+
+export const getData = async (url, token?) => {
+    const res = await fetch(`${baseUrl}/api/${url}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': token
+        }
+    })
+
+    const data = await res.json()
+    return data
 }
 
-class TokenApi implements ITokenApi {
-  // response
-  handleResponse(res) {
-    if (res) {
-      return res
-    }
-  }
-  args(header: string, url, body?: Record<string, any>) {
-    const args: Record<string, any> = {
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      data: body?body:undefined,
-      url,
-    }
-    return args
-  }
+export const postData = async (url, post, token?) => {
+    const res = await fetch(`${baseUrl}/api/${url}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify(post)
+    })
 
-  // get
-  async get(header: string, url: string) {
-    const args = this.args(url, header)
-    args.method = 'GET'
-    try {
-      const res = await axios(args)
-      return this.handleResponse(res)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  // post
-  async post(header: string, url: string, body: Record<string, any>): Promise<Record<string, any>> {
-    const args = this.args(url, header, body)
-    args.method = 'POST'
-    try {
-      const res = await axios(args)
-      return this.handleResponse(res)
-    } catch (err) {
-      console.error('Request Fail: ', err)
-    }
-  }
-
-  // put
-  async put(header: string, url: string, body: Record<string, any>): Promise<Record<string, any>> {
-    const args = this.args(url, header, body)
-    args.method = 'PUT'
-    try {
-      const res = await axios(args)
-      return this.handleResponse(res)
-    } catch (err) {
-      console.error('Request Fail: ', err)
-    }
-  }
-  // Method DELETE
-  async delete(header: string, url: string): Promise<Record<string, any>> {
-    const args = this.args(url, header)
-    args.method = 'DELETE'
-    try {
-      const res = await axios(args)
-      return this.handleResponse(res)
-    } catch (err) {
-      console.error('Request Fail: ', err)
-    }
-  }
-
-  postTxs(url: string, method: string): any {
-    return axios[method](url)
-  }
+    const data = await res.json()
+    return data
 }
 
-const tokenApi = new TokenApi()
 
-export default tokenApi
 
-// tao them method de rieng url ra
+export const putData = async (url, post, token) => {
+    const res = await fetch(`${baseUrl}/api/${url}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify(post)
+    })
+
+    const data = await res.json()
+    return data
+}
+
+export const patchData = async (url, post, token) => {
+    const res = await fetch(`${baseUrl}/api/${url}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify(post)
+    })
+
+    const data = await res.json()
+    return data
+}
+
+
+export const deleteData = async (url, token) => {
+    const res = await fetch(`${baseUrl}/api/${url}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        }
+    })
+
+    const data = await res.json()
+    return data
+}

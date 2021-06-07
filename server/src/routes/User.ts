@@ -1,18 +1,18 @@
-import Services from "../controller/user";
+import AuthServices from "../controller/user";
 import express from "express";
-import authenticateToken from "../common/authenticateToken";
+
 const router = express.Router();
 
-// Can receive req.query or req.params
-router.get("/", Services.get);
-router.delete("/:id", Services.delete);
+router.get("/", AuthServices.get);
 
-// Can receive req.body req.query or req.params
-router.post("/", Services.post);
-router.put("/:id", Services.put);
+router.delete("/:id", AuthServices.delete);
 
-// Get specific product by ID
-router.get("/:id", Services.getById);
-router.get("/cart/:id", Services.getById);
+router.post("/", AuthServices.post);
+
+router.put("/:id", AuthServices.put);
+
+router.get("/:id", AuthServices.getById);
+
+router.get("/cart/:id", AuthServices.getById);
 
 export default router;

@@ -1,9 +1,11 @@
-import {defaultModel} from '../common/constants'
+import { defaultModel } from "../common/constants";
 
 export default {
-    username: defaultModel.stringUnique,
-    password: defaultModel.stringRequired,
-    cart: defaultModel.array,
-    ordered: defaultModel.array,
-}
-
+  username: defaultModel.string,
+  email: defaultModel.stringUnique,
+  password: defaultModel.stringRequired,
+  avatar: defaultModel.avatar,
+  cart: defaultModel.array,
+  ordered: defaultModel.array,
+  roll: defaultModel.role,
+};

@@ -4,8 +4,8 @@ export const StyledHeaderCustom = styled.div`
   height: 102px;
   position: sticky;
   top: 0;
-  background-color: #fff; 
-  z-index: 200;
+  background-color: #fff;
+  z-index: 9;
 `
 
 export const StyledHeaderPromotion = styled.div`
@@ -32,7 +32,7 @@ export const StyledHeaderNav = styled.ul`
   list-style-type: none;
   align-items: center;
   justify-content: center;
-  width: 70vw;
+  width: 65vw;
   @media (max-width: 768px) {
     display: none;
   }
@@ -55,16 +55,42 @@ export const StyledHeaderBrand = styled.div`
   padding: 6px 24px;
 `
 
-export const StyledHeaderSearchCart = styled.div`
+export const StyledHeaderUser = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   > div {
     margin: 0 12px;
   }
-  @media (max-width: 768px){
-    >.nav-search{
-      display: none;
-    }
-  }
 `
+export const StyledHeaderUserCart = styled.div`
+  > i {
+    font-size: 2rem;
+    color: burlywood;
+  }
+  cursor: pointer;
+`
+export const StyledHeaderUserInfo = styled.div`
+  font-size: 1.3rem;
+  text-transform: capitalize;
+`
+
+export const StyledHeaderUserLogin = styled.div`
+  font-size: 1.3rem;
+  border: none;
+  background-color: burlywood;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+`
+
+export const StyledHeaderUserLogout = styled.button`
+  font-size: 1.3rem;
+  border: none;
+  background-color: burlywood;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+`
+
+

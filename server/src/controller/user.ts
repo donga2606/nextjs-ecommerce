@@ -47,7 +47,6 @@ export default class UserServices {
         cart,
         ordered,
       });
-      // saveStorage(payload._id, JSON.stringify(payload));
       return res.json({ success: true, data: payload });
     } catch (error) {
       return res.status(500);

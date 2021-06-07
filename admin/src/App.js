@@ -13,7 +13,7 @@ function App() {
   return (
     <Admin dataProvider={dataProvider}>
       <Resource name="product" list={ProductList} create={ProductCreate} edit={ProductEdit}></Resource>
-      <Resource name="user" list={UserList} create={UserCreate} edit={UserEdit}></Resource>
+      {/* <Resource name="user" list={UserList} create={UserCreate} edit={UserEdit}></Resource> */}
     </Admin>
   );
 }
