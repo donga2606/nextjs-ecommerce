@@ -19,7 +19,7 @@ const DetailPage = (props) => {
   return (
     <>
       <Head>
-        <title>SevenSunday Fashion</title>
+        <title>Sản phẩm</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {product ? (
