@@ -64,10 +64,6 @@ export const StyledHeaderUser = styled.div`
   }
 `
 export const StyledHeaderUserCart = styled.div`
-  > i {
-    font-size: 2rem;
-    color: burlywood;
-  }
   cursor: pointer;
 `
 export const StyledHeaderUserInfo = styled.div`
@@ -91,6 +87,7 @@ export const StyledHeaderUserLogout = styled.button`
   padding: 5px 10px;
   border-radius: 10px;
   cursor: pointer;
+  
 `
 
 

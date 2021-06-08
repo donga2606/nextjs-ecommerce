@@ -17,6 +17,8 @@ import { DataContext } from '../../../controller/store/GlobalState'
 import Cookie from 'js-cookie'
 import { useRouter } from 'next/router'
 
+
+
 // TODO: làm responsive
 
 /* TODO: đưa icon giỏ hàng vào */
@@ -40,7 +42,7 @@ const HeaderCustom = (props) => {
         <StyledHeaderBrand>
           <Link href="/">
             <a>
-              <img src="https://cdn.shopify.com/s/files/1/1236/1344/files/1e2f29-01_140x.png?v=1606900514" />
+              <img src="/images/logo.png" />
             </a>
           </Link>
         </StyledHeaderBrand>
@@ -61,7 +63,7 @@ const HeaderCustom = (props) => {
         <StyledHeaderUser>
           <StyledHeaderUserCart>
             <Link href="/cart">
-              <i className="fas fa-luggage-cart"> {cart.length}</i>
+              <a><i className="fas fa-luggage-cart"> {cart.length}</i></a>
             </Link>
           </StyledHeaderUserCart>
           {auth.user ? (
@@ -71,7 +73,7 @@ const HeaderCustom = (props) => {
             </>
           ) : (
             <StyledHeaderUserLogin>
-              <Link href="/login">Login</Link>
+              <Link href="/login"><a>Login</a></Link>
             </StyledHeaderUserLogin>
           )}
 
