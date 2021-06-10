@@ -39,11 +39,13 @@ const Signin = () => {
       },
     })
     
-    Cookie.set('refreshtoken', res.refresh_token, {
-      path: 'api/auth/accesstoken',
-      expires: 7,
-    })
+    // Cookie.set('refreshtoken', res.refresh_token, {
+    //   path: 'https://localhost:4041/api/auth/accesstoken',
+    //   expires: 7,
+    // })
+    
     localStorage.setItem('logged', 'true')
+    localStorage.setItem('refreshtoken', res.refresh_token)
   }
 
   useEffect(() => {

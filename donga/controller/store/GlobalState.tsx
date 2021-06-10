@@ -2,7 +2,7 @@ import { createContext, useReducer, useEffect } from 'react'
 import { getData } from '../TokenApi'
 import { ICartItem, IUser } from './Interfaces'
 import { reducers } from './Reducers'
-
+import Cookie from 'js-cookie'
 interface IContextProps {
   state: IState
   dispatch: ({ type, payload }) => void
@@ -29,9 +29,14 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     const logged = localStorage.getItem('logged')
+    
     if (logged) {
-      getData('auth/accessToken').then((res) => {
-        if (res.err) return localStorage.removeItem('logged')
+      const token = localStorage.getItem('refreshtoken')
+      getData('auth/accesstoken', token).then((res) => {
+        if (res.err) {
+          return localStorage.removeItem('logged')
+        }
+
         dispatch({
           type: 'AUTH',
           payload: {
@@ -49,9 +54,8 @@ export const DataProvider = ({ children }) => {
     if (items_in_cart) dispatch({ type: 'ADD_CART', payload: items_in_cart })
   }, [])
 
-  
   useEffect(() => {
-    console.log('add cart: ', cart)
+    
     localStorage.setItem('items_in_cart', JSON.stringify(cart))
   }, [cart])
 

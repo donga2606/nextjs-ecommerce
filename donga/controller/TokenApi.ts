@@ -7,7 +7,8 @@ export const getData = async (url, token?) => {
         method: 'GET',
         headers: {
             'Authorization': token
-        }
+        },
+        credentials: "same-origin"
     })
 
     const data = await res.json()

@@ -12,6 +12,7 @@ import { ApolloServer, Request } from "apollo-server-express";
 import { resolvers } from "./resolver-gql/resolver-gql";
 import typeDefs from "./schema-gql/schema-gql";
 import loginServices from "./controller/login";
+import cookies from 'cookie-parser'
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(cookies())
 
 // api route
 // disable user router, replace by auth

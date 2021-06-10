@@ -1,3 +1,4 @@
+
 import {
   StyledHeaderCustom,
   StyledHeaderPromotion,
@@ -29,8 +30,9 @@ const HeaderCustom = (props) => {
   
   const router = useRouter()
   const handleLogout = () => {
-    Cookie.remove('refreshtoken', { path: 'api/auth/accessToken' })
-    localStorage.removeItem('firstLogin')
+    // Cookie.remove('refreshtoken', { path: 'api/auth/accessToken' })
+    localStorage.removeItem('Logged')
+    localStorage.removeItem('refreshtoken')
     dispatch({ type: 'AUTH', payload: {} })
     dispatch({ type: 'NOTIFY', payload: { success: 'Logged out!' } })
     return router.push('/')
