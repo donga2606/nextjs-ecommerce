@@ -60,8 +60,8 @@ class MyDocument extends Document {
           />
           <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-          <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+          {/* <script src="https://kit.fontawesome.com/a076d05399.js"></script> */}
+          <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous"/>
           <style type="text/css">{globalStyles}</style>
         </Head>
         <body>
