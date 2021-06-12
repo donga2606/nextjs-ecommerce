@@ -18,11 +18,14 @@ export const StyledHeroText = styled.div`
   color: white;
   >h1{
     padding: 10px;
+    word-spacing: 4px;
+    letter-spacing: 2px;
   }
   >div{
     max-width: 500px;
     line-height: 20px;
-    word-spacing: 0.1rem;
+    word-spacing: 0.2rem;
     color: #fff;
+    letter-spacing: 2px;
   }
 `
